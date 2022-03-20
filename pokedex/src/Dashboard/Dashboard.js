@@ -84,6 +84,7 @@ const Dashboard = ({pokemons}) => {
                     <Card key={index} pokemon={pokemon} handleAddPokemon={handleAddPokemon} handleInputChange={handleInputChange}></Card>
                 ))}
             </div>
+            <br></br>
             <nav aria-label="navigation">
                 <ul className="pagination justify-content-center">
                     <li className="page-item">

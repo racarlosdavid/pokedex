@@ -1,5 +1,5 @@
 import React, {  useState,useEffect } from "react";
-import Card from "./Card";
+import Card from "./Card2";
 import { useUser } from "../context/UserContext"; 
 import { toast } from 'react-toastify'
 import config from '../config/config';
@@ -7,14 +7,13 @@ import NavbarDashboard from './NavbarDashboard';
 
 const UserPokemons = () => {
     const [page,setPage] = useState(0);
-    const [nickname,setNickname] = useState('');
-
     const [pokemons, setPokemons] = useState([])
     const context_user = useUser()
 
     useEffect(() => {
+        const user_id = context_user.id;
         const getAllPokemons = () => {
-            fetch(`${config.BACKEND}/user/getPokemons/userid/${context_user.id}`, {
+            fetch(`${config.BACKEND}/user/getPokemons/userid/${user_id}`, {
                 method: "GET"
             })
             .then(response => {
@@ -34,8 +33,6 @@ const UserPokemons = () => {
             .catch(error => {
                 console.log(error)
             })
-
-            
         }
         getAllPokemons()
         //console.log(pokemons)
@@ -47,36 +44,30 @@ const UserPokemons = () => {
 
     const nextPage = () => { 
         //setPage(page+100);
-        if (page+100 <= 898) {
+        if (page+100 <= pokemons.length) {
             setPage(page+100);
         }
     }
 
     const previewPage = () => {
-        if (page-10 >= 0) {
+        if (page-100 >= 0) {
             setPage(page-100);
         }
-    }
-
-    const  handleAddPokemon = (pokemon) => {
-        console.log("hola",pokemon,nickname)
-        //aqui hago el fetch POST para guardar el pokemon al usuario
-        
-    }
-
-    const handleInputChange = (event) => {
-        setNickname( event.target.value);
     }
 
     return(
         <div>
             <NavbarDashboard></NavbarDashboard>
             <br></br>
-            <div className="row row-cols-1 row-cols-md-5 g-4">
-                { paginationPokes().map((pokemon) => (   //{idPokemon, name, moves, types, url_photo}                  
-                    <Card pokemon={pokemon} handleAddPokemon={handleAddPokemon} handleInputChange={handleInputChange}></Card>
+            <div className="d-flex justify-content-center">
+            <div className="card w-75">
+            <div className="row row-cols-1 row-cols-md-2 g-2">
+                { paginationPokes().map((pokemon,index) => (   //{idPokemon, name, moves, types, url_photo}                  
+                    <Card key={index} pokemon={pokemon}></Card>
                 ))}
+            </div></div>
             </div>
+            <br></br>
             <nav aria-label="navigation">
                 <ul className="pagination justify-content-center">
                     <li className="page-item">
@@ -90,6 +81,7 @@ const UserPokemons = () => {
                     </li>
                 </ul>
             </nav>
+          
         </div>
     );
 }

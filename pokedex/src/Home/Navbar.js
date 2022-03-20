@@ -1,22 +1,5 @@
-import { useHistory } from "react-router-dom";
+
 const Navbar = () => {
-
-    const history = useHistory();
-
-    const onProfile = (event) => {
-        event.preventDefault();
-        history.replace("/profile")
-    }
-
-    const onDashboard = (event) => {
-        history.replace("/dashboard")
-    }
-
-    const onMyPokemons = (event) => {
-        history.replace("/mypokemons")
-    }
-
-    
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">

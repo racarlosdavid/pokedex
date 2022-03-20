@@ -1,9 +1,9 @@
 //import { useState, useEffect } from 'react'
-import React, { Fragment, useState, useContext } from "react";
+import React, { Fragment, useState } from "react";
 import { toast } from 'react-toastify'
 import { useHistory } from "react-router-dom";
 import config from '../config/config';
-import { useUser, useUserUpdate } from "../context/UserContext"; 
+import { useUserUpdate } from "../context/UserContext"; 
 import Navbar from './Navbar';
 
 const Login = () => {

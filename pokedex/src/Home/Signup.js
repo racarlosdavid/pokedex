@@ -3,7 +3,6 @@ import React, { Fragment, useState } from "react";
 import { toast } from 'react-toastify'
 import { useHistory } from "react-router-dom";
 import config from '../config/config';
-import Profile from "../Dashboard/Profile";
 import Navbar from './Navbar';
 
 const Signup = () => {
@@ -35,26 +34,6 @@ const Signup = () => {
         setPhoto(event.target.files[0] );
     }
 
-    function extraerBase64vv(){
-        const reader = new FileReader();
-       
-        reader.onload = function () {
-            const base64String = reader.result.replace("data:", "").replace(/^.+,/, "");
-            //console.log(base64String);
-            const img_profile  = {
-                name: photo.name,
-                tipoFile: photo.name.match(/\.([^\.]+)$/)[1],
-                sizeFile: photo.size,
-                base64: base64String
-            }
-            setData({
-                ...data,
-                profile_photo: img_profile
-            });
-        }
-        reader.readAsDataURL(photo);
-    }
-
     function extraerBase64() {
         return new Promise(resolve => {
             try{
@@ -68,7 +47,7 @@ const Signup = () => {
                     //});
                     resolve({
                         name: photo.name,
-                        tipoFile: photo.name.match(/\.([^\.]+)$/)[1],
+                        tipoFile: photo.name.match(/\.([^.]+)$/)[1],
                         sizeFile: photo.size,
                         base: base64String
                     });
