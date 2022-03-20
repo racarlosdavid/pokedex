@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import { useHistory } from "react-router-dom";
 import config from '../config/config';
 import Profile from "../Dashboard/Profile";
+import Navbar from './Navbar';
 
 const Signup = () => {
 
@@ -84,7 +85,7 @@ const Signup = () => {
     }
 
     const save = (event) => {
-        event.preventDefault(); console.log("fds")
+        event.preventDefault(); 
         //onFileUpload()
         //const result = await extraerBase64(photo);
         //console.log(result);
@@ -159,6 +160,8 @@ const Signup = () => {
 
     return (
         <Fragment>
+            <Navbar></Navbar>
+            <br></br>
             <div className="d-flex justify-content-center">
             <div className="card w-75">
             <main className="container">
@@ -182,11 +185,11 @@ const Signup = () => {
                     </div>
 
                     <div className="row g-3 align-items-center">
-                        <div className="form-group col-md-6">
+                        <div className="form-group col-md-3">
                             <label htmlFor="age" className="form-label">Age</label>
                             <input type="number" name="age" id="age" onChange={handleInputChange} className="form-control" value={data.age}></input>
                         </div>
-                        <div className="form-group col-md-6">
+                        <div className="form-group col-md-9">
                             <label htmlFor="photo" className="form-label">Photo</label>
                             <br></br> 
                             <input type="file" onChange={handleonFileChange} />

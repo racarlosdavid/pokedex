@@ -8,6 +8,16 @@ const Navbar = () => {
         history.replace("/profile")
     }
 
+    const onDashboard = (event) => {
+        history.replace("/dashboard")
+    }
+
+    const onMyPokemons = (event) => {
+        history.replace("/mypokemons")
+    }
+
+    
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">Home</a>
@@ -16,17 +26,12 @@ const Navbar = () => {
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
-            <li className="nav-item active">
-                <a className="nav-link" href="/login">Login</a>
-            </li>
-            <li className="nav-item">
-                <a className="nav-link" href="/signup">Signup</a>
-            </li>
-            <li className="nav-item">
-            <button className="btn btn-primary" onClick={onProfile}>Profile</button>
-                
-            </li>
-           
+                <li className="nav-item active">
+                    <a className="nav-link" href="/login">Login</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="/signup">Signup</a>
+                </li>
             </ul>
         </div>
         </nav>

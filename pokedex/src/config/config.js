@@ -1,5 +1,5 @@
 const config = {
-    BACKEND: process.env.REACT_APP_BACKEND_URL
+    BACKEND: 'https://pokedex-backend-mlsdj2uhea-uc.a.run.app/'
 }
 
 module.exports = config;
