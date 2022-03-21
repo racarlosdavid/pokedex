@@ -1,4 +1,4 @@
-FROM node:alpine3.11
+FROM node:16-alpine
 WORKDIR /backendPokedex
 COPY . .
 RUN npm install
