@@ -13,7 +13,9 @@
 ![Alt text](Img/Pokedex.arquitecture.png)
 
 ## Signup
-If you do not have a user you must fill out the form to create an account
+If you do not have a user you must fill out the form to create an account.
+
+When you upload your profile photo remember to press the Upload Photo button because otherwise your photo will not be processed, so remember this step is important.
 ![Alt text](Img/signup.png)
 
 ## Login
