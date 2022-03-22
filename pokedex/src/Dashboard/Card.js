@@ -1,15 +1,42 @@
+import Moves from "./Moves";
+import Save from "./Save";
+
 function Card({ pokemon,handleAddPokemon,handleInputChange }) {
     return (
-        <div key={pokemon.idPokemon} className="col">
+        <div key={pokemon.idPokemon} >
             <div className="card h-100">
-                <img src={pokemon.url_photo} alt={pokemon.name} style={{height:100, width:100}}/>
-                
-                <div className="card-body">
-                    <h5 className="card-title">{pokemon.name}</h5>
-                    <p className="card-text">This is </p>
-                </div>
+            <div className="container-fluid">
+  
 
+                <div className="row g-1 align-items-center">
+                    <img src={pokemon.url_photo} alt={pokemon.name} style={{height:200, width:200}}/>
+                    <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td><h5 className="card-title">Name: </h5></td>
+                                        <td><h5 className="card-title text-primary"> {pokemon.name}</h5></td>
+                                    </tr>
+                                    <tr>
+                                        <td><h5 className="card-title">Moves: </h5></td>
+                                        <td><Moves pokemon={pokemon}></Moves></td>
+                                    </tr>
+                                    </tbody>
+                                </table> 
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
                  <div className="card-footer">
+                    <div className="row g-1 align-items-center">
+                        <Save pokemon={pokemon}></Save>
+                    </div>
+                     {/* 
                     <div className="row g-3 align-items-center">
                         <div className="col-auto">
                             <label htmlFor="nickname" className="col-form-label">Nickname</label>
@@ -23,6 +50,7 @@ function Card({ pokemon,handleAddPokemon,handleInputChange }) {
                             </button>
                         </div>
                     </div>
+                    */}
                 </div>
             </div>
         </div>

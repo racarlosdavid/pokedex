@@ -3,18 +3,29 @@ import React, { useEffect, useState } from "react";
 import { toast } from 'react-toastify'
 import { useHistory } from "react-router-dom";
 import config from '../config/config';
-import { useUser } from "../context/UserContext"; 
+import { useUser,useUserUpdate } from "../context/UserContext"; 
 import NavbarDashboard from './NavbarDashboard';
 
 const Profile = () => {
     const context_user = useUser()
+    const context_userUpdate = useUserUpdate()
 
-    const [data, setData] = useState(context_user)
+    const [data, setData] = useState({
+        name: '',
+        password: '',
+        pokemon_trainer_nickname: '',
+        region_of_origin: '',
+        gender: '',
+        age: '',
+        email: '',
+        trainer_class: '',
+        url_photo: ''
+    })
 
     useEffect(()=>{
         setData(context_user)
-        console.log(context_user)
-    },[context_user])
+        //console.log(context_user)
+    },[])
 
     const history = useHistory();
 
@@ -38,16 +49,18 @@ const Profile = () => {
         .then(response => {
             return response.json()
         })
-        .then(data => { 
-            if (data.error == null) {
+        .then(data_response => { 
+            if (data_response.error == null) {
                 //setData({})
+                context_userUpdate(data)
+                //console.log(data);
                 toast.success('User Updated', {
                     onClose: () => {
                         history.replace("/dashboard")
                     }
                 })
             }else{
-                toast.error(data.msj)
+                toast.error(data_response.msj)
             }
             
         })

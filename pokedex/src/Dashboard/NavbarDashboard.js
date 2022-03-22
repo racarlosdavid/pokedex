@@ -1,5 +1,9 @@
 import { useHistory } from "react-router-dom";
+import { useUser } from "../context/UserContext"; 
+
 const Navbar = () => {
+
+    const context_user = useUser()
 
     const history = useHistory();
 
@@ -31,10 +35,10 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <button className="btn btn-light" onClick={onProfile}><i className="bi bi-person-fill"></i></button>
+                    <button className="btn btn-light" onClick={onProfile}><i className="bi bi-person-fill"></i>{`  ${context_user.name}`}</button>
                 </li>
                 <li className="nav-item">
-                    <button className="btn btn-light" onClick={onDashboard}>dashboard</button>
+                    <button className="btn btn-light" onClick={onDashboard}>Pokemon Gallery</button>
                 </li>
                 <li className="nav-item">
                     <button className="btn btn-light" onClick={onMyPokemons}>My Pokemons</button>

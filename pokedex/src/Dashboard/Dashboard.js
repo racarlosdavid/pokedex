@@ -79,11 +79,14 @@ const Dashboard = ({pokemons}) => {
         <div>
             <NavbarDashboard></NavbarDashboard>
             <br></br>
-            <div className="row row-cols-1 row-cols-md-5 g-4">
+            
+            <div className="row row-cols-1 row-cols-md-5 g-4 container-fluid">
                 { paginationPokes().map((pokemon,index) => (   //{idPokemon, name, moves, types, url_photo}                  
                     <Card key={index} pokemon={pokemon} handleAddPokemon={handleAddPokemon} handleInputChange={handleInputChange}></Card>
                 ))}
             </div>
+
+            
             <br></br>
             <nav aria-label="navigation">
                 <ul className="pagination justify-content-center">
